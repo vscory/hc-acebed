@@ -235,3 +235,109 @@ document.addEventListener('DOMContentLoaded', function () {
       updateSlide();
   });
 });
+
+//매거진
+
+$(document).ready(function () {
+  var $slider = $('.fade');
+  var $currentSlide = $('.current-slide');
+  var $totalSlides = $('.total-slides');
+  var $nextSlideButton = $('#next-slide'); // 이미지 클릭을 위한 ID
+
+  $slider.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      var i = (currentSlide ? currentSlide : 0) + 1;
+      var total = slick.slideCount;
+      $currentSlide.text(i);
+      $totalSlides.text(total);
+  });
+
+  var sliderSettings = {
+      infinite: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear',
+      prevArrow: null,
+      nextArrow: null,
+      autoplay: true,
+      autoplaySpeed: 2000
+  };
+
+  $slider.slick(sliderSettings);
+
+  $nextSlideButton.on('click', function () {
+      $slider.slick('slickNext'); // 이미지 클릭으로 다음 슬라이드로 이동
+  });
+
+  // 마우스가 슬라이더에 진입하면 자동 재생 멈춤
+  $slider.on('mouseenter', function () {
+      $slider.slick('slickPause');
+  });
+
+  // 마우스가 슬라이더에서 나가면 자동 재생 다시 시작
+  $slider.on('mouseleave', function () {
+      $slider.slick('slickPlay');
+  });
+});
+
+
+//리뷰
+
+$('.review-box').slick({
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  responsive: [
+      {
+          breakpoint: 768,
+          settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '40px',
+              slidesToShow: 1
+          }
+      },
+      {
+          breakpoint: 480,
+          settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: '0px',
+              slidesToShow: 1
+          }
+      }
+  ]
+});
+
+$('.review-box').on('afterChange', function (event, slick, currentSlide) {
+  // currentSlide는 현재 슬라이드 번호입니다.
+  // 섹션 바 아이템을 갱신하여 현재 섹션을 강조 표시합니다.
+  $('.section-bar-item').css('background-color', '#ccc'); // 모든 막대를 기본 색상으로 초기화
+  $('.section-bar-item:eq(' + currentSlide + ')').css('background-color', '#408ebc'); // 현재 섹션 강조 표시
+});
+
+// 섹션 바 아이템을 클릭했을 때
+$('.section-bar-item').on('click', function () {
+  // 해당 섹션의 인덱스(순서)를 가져옵니다.
+  var sectionIndex = $(this).data('section-index');
+
+  // 슬라이더를 해당 섹션으로 이동시킵니다.
+  $('.review-box').slick('slickGoTo', sectionIndex);
+});
+
+$(document).ready(function () {
+// 화면 크기를 확인하고 섹션바를 초기화합니다.
+checkScreenSize();
+
+// 화면 크기가 변경될 때마다 섹션바를 확인하여 업데이트합니다.
+$(window).resize(function () {
+checkScreenSize();
+});
+
+function checkScreenSize() {
+if ($(window).width() >= 768) {
+$('.section-bar').hide(); // 섹션바 숨기기
+} else {
+$('.section-bar').show(); // 섹션바 보이기
+}
+}
+});
