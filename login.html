@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0">
+    <title>login</title>
+    <link rel="stylesheet" href="login.css">
+    <script type="text/javascript" src="script.js"></script>
+    <!-- 제이쿼리 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- slick cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+</head>
+
+
+
+<body>
+
+    <div w3-include-html="header.html"></div>
+
+    <div class="container">
+    <article class="login">
+
+        <div>
+            <h3>로그인</h3>
+            <p>환영합니다!<br>행복한 에이스침대 입니다.</p>
+        </div>
+
+        <div>
+            <p>통합 아이디로 로그인 하실 수 있습니다.
+            <div>
+                <input type="text" placeholder="아이디를 입력해주세요.">
+                <input type="password" placeholder="비밀번호를 입력해주세요.">
+                <div>
+                    <div>
+                        <input type="checkbox">
+                        <p>아이디 저장</p>
+                    </div>
+                    <div>
+                        <p>아이디 찾기</p>
+                        <span>｜</span>
+                        <p>비밀번호 찾기</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button>로그인</button>
+                <button><a href="join.html">회원가입</a></button>
+            </div>
+
+            <hr>
+
+            <h5>간편로그인</h5>
+            <div>
+                <button><img
+                        src="images/login/login-google.png">
+                    구글 로그인</button>
+                <button><img
+                        src="images/login/login-kakao.png">
+                    카카오 로그인</button>
+                <button><img
+                        src="images/login/login-naver.png">
+                    네이버 로그인</button>
+            </div>
+        </div>
+
+    </article>
+
+
+
+</div>
+
+
+
+<div w3-include-html="footer.html"></div>
+
+<script>
+includeHTML();
+</script>
+
+</body>
+
+</html

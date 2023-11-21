@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0">
+    <title>main</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="script.js"></script>
+    <!-- 제이쿼리 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- slick cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+</head>
+
+
+<body>
+   
+
+    <div w3-include-html="header.html"></div>
+
+
+        <main>
+            <div class="slide_wrap">
+                <div class="slide">
+                    <div class="slide_item item1">
+                        <div>
+                            <h1>제니와 좋은 잠</h1>
+                            <h2>talk</h2>
+                        </div>
+                    </div>
+                    <div class="slide_item item2">
+                        <div>
+                            <h1>나에게 맞는 매트리스 찾기</h1>
+                            <p>침대는 과학! 에이스침대에서 운영하는 이동수면공학연구소의 기술과 노하우가 담긴<br>
+                                5만여 건의 분석 데이터를 기반으로 고객님에게 맞는 매트리스를 찾아드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="slide_item item3">
+                        <div>
+                            <h1>좋은 잠이 쌓인다</h1>
+                            <h2>좋은 나를 만든다</h2>
+                        </div>
+                    </div>
+                    <div class="slide_item item4">
+                        <div>
+                            <p>침대 과학을 만나는 프리미엄 공간</p>
+                            <h1>ACE SQUARE</h1>
+                        </div>
+                    </div>
+                    <div class="slide_item item5">
+                        <div>
+                            <h1>BACIO</h1>
+                            <p>원하는 스타일로  침대를 자유롭게 꾸밀 수 있는 홈퍼니싱 컨셉의 싱글 침대</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="slide_prev_button slide_button">《</div>
+                <div class="slide_next_button slide_button">》</div>
+                <ul class="slide_pagination"></ul>
+            </div>
+        </main>
+    
+
+
+    <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const slideWrap = document.querySelector('.slide_wrap');
+            const slide = document.querySelector('.slide');
+            const slideItems = document.querySelectorAll('.slide_item');
+            const prevButton = document.querySelector('.slide_prev_button');
+            const nextButton = document.querySelector('.slide_next_button');
+            const pagination = document.querySelector('.slide_pagination');
+
+            let currentIndex = 0;
+            let intervalId;
+
+            // 추가된 변수
+            let isTransitioning = false;
+
+            function updateSlide() {
+                const itemWidth = slideWrap.clientWidth;
+                slide.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }
+
+            function updatePagination() {
+                pagination.innerHTML = '';
+                for (let i = 0; i < slideItems.length; i++) {
+                    const dot = document.createElement('li');
+                    dot.classList.add('pagination_dot');
+                    dot.addEventListener('click', () => {
+                        if (!isTransitioning) {
+                            currentIndex = i;
+                            updateSlide();
+                            updatePagination();
+                        }
+                    });
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    }
+                    pagination.appendChild(dot);
+                }
+            }
+
+            function goToNextSlide() {
+                if (!isTransitioning) {
+                    if (currentIndex < slideItems.length - 1) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateSlide();
+                    updatePagination();
+                }
+            }
+
+            function startAutoSlide() {
+                intervalId = setInterval(goToNextSlide, 3500); // 3.5초마다 슬라이드 변경
+            }
+
+            function stopAutoSlide() {
+                clearInterval(intervalId);
+            }
+
+            prevButton.addEventListener('click', () => {
+                if (!isTransitioning && currentIndex > 0) {
+                    currentIndex--;
+                    updateSlide();
+                    updatePagination();
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (!isTransitioning) {
+                    goToNextSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+            });
+
+            slideWrap.addEventListener('mouseenter', stopAutoSlide);
+            slideWrap.addEventListener('mouseleave', startAutoSlide);
+
+            // 추가된 트랜지션 종료 핸들러
+            function transitionEndHandler() {
+                isTransitioning = false;
+                slide.style.transition = ''; // 트랜지션 제거
+            }
+
+            slide.addEventListener('transitionend', transitionEndHandler);
+
+            startAutoSlide();
+            updateSlide();
+            updatePagination();
+
+            window.addEventListener('resize', () => {
+                updateSlide();
+            });
+        });
+    </script>
+
+    <article class="technology">
+        <div>
+            <div>
+                <h1>오늘밤 어떤 스프링으로 <br />만든 침대에서 <br>주무시겠습니까?</h1>
+                <h3>HYBRID Z SPRING</h3>
+                <p>에이스만의 첨단 공학이 적용된 스프링은 <br>인체 곡선과 하중 분포에 따라 위에서 한 번 <br>부드럽게 맞춰주고 밑에서 또 한 번 <br>단단하게 받쳐줍니다. </p>
+            </div>
+
+            <div class="vid-button">
+                <img
+                    src="images/main/main-at1.jpg">
+                <button id="play-button">▶</button>
+            </div>
+
+            <div id="video-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="close-button">&times;</span>
+                    <iframe src="https://www.youtube.com/embed/igmIP4Zp98M" frameborder="0"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+
+
+
+            <script>
+                // 모달 열기
+                document.querySelector(".vid-button").addEventListener("click", function () {
+                    document.getElementById("video-modal").style.display = "block";
+                });
+
+                // 모달 닫기
+                document.getElementById("close-button").addEventListener("click", function () {
+                    document.getElementById("video-modal").style.display = "none";
+                });
+
+                // 모달 외부 클릭으로 닫기
+                window.addEventListener("click", function (event) {
+                    if (event.target == document.getElementById("video-modal")) {
+                        document.getElementById("video-modal").style.display = "none";
+                    }
+                });
+
+            </script>
+
+
+        </div>
+
+
+    </article>
+
+
+
+    <article class="collection">
+
+        <div>
+            <h1><span>ACE COLLECTION</h1>
+        </div>
+
+        <div>
+
+            <div class="space-betweens">
+                <button class="tabmenu-button tablink tabmenu-color" onclick="openCity(event,'new')">신제품</button>
+                <button class="tabmenu-button tablink" onclick="openCity(event,'rec')">추천제품</button>
+            </div>
+
+            <script>
+                // 선택지를 모두 가져온다
+                const items = document.querySelectorAll(".tabmenu-button");
+                // 처음 항목을 선택하도록 초기 설정
+                if (items.length > 0) {
+                    const firstItem = items[0];
+                    firstItem.classList.add('active');
+                }
+                // 배열로 저장되기 때문에 forEach로 하나씩 이벤트를 등록해준다.
+                items.forEach((item) => {
+                    item.addEventListener('click', () => {
+                        items.forEach((e) => {
+                            // 하나만 선택되도록 기존의 효과를 지워준다.
+                            e.classList.remove('active');
+                        })
+                        // 선택한 그 아이만 효과를 추가해준다.
+                        item.classList.add('active');
+                        // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
+                        document.getElementById('next').style.display = 'block';
+                    })
+                })
+            </script>
+
+
+            <div class="pick-product">
+
+                <div id="new" class="product">
+                    <div>
+                        <img src="images/main/main-side_item5.jpg">
+                    </div>
+                    <div>
+                        <div>
+                            <p>#싱글침대</p>
+                            <p>#아이침대</p>
+                            <p>#자석침대</p>
+                        </div>
+                        <h4>bacio</h4>
+                        <p>원하는 스타일로 침대를 자유롭게 꾸밀 수 있는 홈퍼니싱 컨셉의 싱글 침대</p>
+                    </div>
+                </div>
+
+                <div id="rec" class="product" style="display:none">
+                    <div>
+                        <img src="images/main/main-prodcut2.jpg">
+                    </div>
+
+                    <div>
+                        <div>
+                            <p>#TVCF침대</p>
+                            <p>#패브릭침대</p>
+                            <p>#신혼부부추천</p>
+                        </div>
+                        <h4>zana</h4>
+                        <p>유려한 곡선이 아름다운 침대 ZANA</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        </div>
+
+    </article>
+
+    <script>
+        //story
+        function openCity(evt, cityName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("product");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" tabmenu-color", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " tabmenu-color";
+        }
+    </script>
+
+
+
+    <article class="magazine">
+        <div>
+            <div>
+                <h1>ace news</h1>
+            </div>
+
+            <div class="fade">
+                <section class="drag">
+                    <img src="images/main/main-magazine1.jpg" alt="">
+                    <div>
+                        <h4>매장오픈소식</h4>
+                        <p>신세계백화점 경기점 리뉴얼 open</p>
+                    </div>
+                </section>
+
+                <section class="drag">
+                    <img src="images/main/main-magazine2.jpg" alt="">
+                    <div>
+                        <h4>매장오픈소식</h4>
+                        <p>롯데백화점 본점 리뉴얼 open</p>
+                    </div>
+                </section>
+
+                <section class="drag">
+                    <img src="images/main/main-magazine3.jpg" alt="">
+                    <div>
+                        <h4>매장오픈소식</h4>
+                        <p>현대백화점 중동점 리뉴얼 open</p>
+                    </div>
+                </section>
+            </div>
+
+            <div>
+                <div class="slider-arrows">
+                    <img src="images/icon/icon-arrow.png" id="next-slide" alt="Next Slide">
+                </div>
+                <div class="slider-counter">
+                    <span class="current-slide"></span> / <span class="total-slides"></span>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <script>
+            $(document).ready(function () {
+                var $slider = $('.fade');
+                var $currentSlide = $('.current-slide');
+                var $totalSlides = $('.total-slides');
+                var $nextSlideButton = $('#next-slide'); // 이미지 클릭을 위한 ID
+
+                $slider.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+                    var i = (currentSlide ? currentSlide : 0) + 1;
+                    var total = slick.slideCount;
+                    $currentSlide.text(i);
+                    $totalSlides.text(total);
+                });
+
+                var sliderSettings = {
+                    infinite: true,
+                    speed: 500,
+                    fade: true,
+                    cssEase: 'linear',
+                    prevArrow: null,
+                    nextArrow: null,
+                    autoplay: true,
+                    autoplaySpeed: 2000
+                };
+
+                $slider.slick(sliderSettings);
+
+                $nextSlideButton.on('click', function () {
+                    $slider.slick('slickNext'); // 이미지 클릭으로 다음 슬라이드로 이동
+                });
+
+                // 마우스가 슬라이더에 진입하면 자동 재생 멈춤
+                $slider.on('mouseenter', function () {
+                    $slider.slick('slickPause');
+                });
+
+                // 마우스가 슬라이더에서 나가면 자동 재생 다시 시작
+                $slider.on('mouseleave', function () {
+                    $slider.slick('slickPlay');
+                });
+            });
+        </script>
+    </article>
+
+
+
+    <article class="review">
+
+        <div>
+            <h1>이달의 리뷰</h1>
+            <h4>Bed is science</h4>
+            <p>한달간 고객 여러분의 위트 있는 리뷰를 모아 소개합니다.</p>
+        </div>
+
+        <div class="review-box">
+            <section>
+                <img src="images/icon/icon-quotes.png">
+
+                <div>
+                    <h3>매트리스 바꾸고 <br>침대에 누우면<br> I'AM 꿀잠이에요 :)</h3>
+                    <h4>김OO 고객님</h4>
+                    <h4>BMA1147, DUO TECH Ⅲ</h4>
+                </div>
+
+                <div>
+                    <button>more + </button>
+
+                    <img src="images/main/main-review1.jpg">
+                </div>
+            </section>
+
+            <section>
+                <img src="images/icon/icon-quotes.png">
+
+                <div>
+                    <h3>프레임 볼수록 이뻐요 너무 튀지도 않고<br> 집과 물아일체!</h3>
+                    <h4>정OO 고객님</h4>
+                    <h4>LUCE-III, HYBRID TECH - BLUE</h4>
+                </div>
+
+                <div>
+                    <button>more + </button>
+
+                    <img src="images/main/main-review2.jpg">
+                </div>
+            </section>
+
+            <section>
+                <img src="images/icon/icon-quotes.png">
+
+                <div>
+                    <h3>침대 구매 고민하는 분 계시다면 에이스 침대 추천합니다~!!</h3>
+                    <h4>이OO 고객님</h4>
+                    <h4>ERBA, DUO TECH Ⅲ</h4>
+                </div>
+
+                <div class="rel">
+                    <button>more + </button>
+
+                    <img src="images/main/main-review3.jpg">
+                </div>
+            </section>
+
+        </div>
+
+        <div class="section-bar">
+            <div class="section-bar-item" data-section-index="0"></div>
+            <div class="section-bar-item" data-section-index="1"></div>
+            <div class="section-bar-item" data-section-index="2"></div>
+        </div>
+
+
+        <script>
+            $('.review-box').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '0px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+
+            $('.review-box').on('afterChange', function (event, slick, currentSlide) {
+                // currentSlide는 현재 슬라이드 번호입니다.
+                // 섹션 바 아이템을 갱신하여 현재 섹션을 강조 표시합니다.
+                $('.section-bar-item').css('background-color', '#ccc'); // 모든 막대를 기본 색상으로 초기화
+                $('.section-bar-item:eq(' + currentSlide + ')').css('background-color', '#408ebc'); // 현재 섹션 강조 표시
+            });
+
+            // 섹션 바 아이템을 클릭했을 때
+            $('.section-bar-item').on('click', function () {
+                // 해당 섹션의 인덱스(순서)를 가져옵니다.
+                var sectionIndex = $(this).data('section-index');
+
+                // 슬라이더를 해당 섹션으로 이동시킵니다.
+                $('.review-box').slick('slickGoTo', sectionIndex);
+            });
+
+            $(document).ready(function () {
+      // 화면 크기를 확인하고 섹션바를 초기화합니다.
+      checkScreenSize();
+
+      // 화면 크기가 변경될 때마다 섹션바를 확인하여 업데이트합니다.
+      $(window).resize(function () {
+        checkScreenSize();
+      });
+
+      function checkScreenSize() {
+        if ($(window).width() >= 768) {
+          $('.section-bar').hide(); // 섹션바 숨기기
+        } else {
+          $('.section-bar').show(); // 섹션바 보이기
+        }
+      }
+    });
+
+        </script>
+
+    </article>
+
+
+
+    <article class="sns">
+
+        <div>
+            <h1>now sns</h1>
+
+            <p>@acebed_official</p>
+        </div>
+
+        <div class="sns-logo">
+            <img src="images/icon/icon-yotube.png">
+            <img src="images/icon/icon-blog.png">
+            <img src="images/icon/icon-insta.png">
+            <img src="images/icon/icon-facebook.png">
+        </div>
+
+        <section class="instar">
+
+            <div class="sns-name">
+                <p>INSTAGRAM</p>
+            </div>
+
+            <div>
+                <div>
+                    <img src="images/main/main-sns_pic1.png">
+                </div>
+
+                <div>
+                    <img src="images/main/main-sns_pic2.png">
+                </div>
+
+                <div>
+                    <img src="images/main/main-sns_pic3.png">
+                </div>
+            </div>
+
+        </section>
+
+    </article>
+
+
+    <div w3-include-html="footer.html"></div>
+
+    <script>
+    includeHTML();
+    </script>
+</body>
+
+</html>

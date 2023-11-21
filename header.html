@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="header.css">
+
+<header>
+    <nav>
+        <div class="logo">
+           <a href="index.html"> <img src="images/header/header-logo.png"></a>
+        </div>
+
+        <ul class="nav-links">
+            <div class="n1">
+
+                <div>
+                    <h4>로그인하시면 더 많은 혜택이 있습니다.</h4>
+                </div>
+
+                <div>
+                    <p><img src="images/icon/icon-login.png"><a href="login.html">로그인</a></p>
+                    <span>│</span>
+                    <p><img src="images/icon/icon-join.png"><a href="join.html">회원가입</a></p>
+                    <span>│</span>
+                    <p><img src="images/icon/icon-present.png"><a href=""> 회원혜택</a></p>
+                </div>
+            </div>
+
+            <div class="nav-menu">
+                <li><a href="purchase.html">purchase</a><p>+</p></li>
+                <li><a href="#">news</a><p>+</p></li>
+                <li><a href="login.html">login</a><p>+</p></li>
+                <li><a href="remove.html">remove</a><p>+</p></li>
+                <li><a href="#">board</a><p>+</p></li>
+                <li><a href="#">qna</a><p>+</p></li>
+                <li><a href="#">faq</a><p>+</p></li>
+            </div>
+
+            <div class="n2">
+                <p><img src="images/icon/icon-map-search.png">매장찾기</p>
+                <p><img src="images/icon/icon-delivery-.png">주문/배송</p>
+                <p><img src="images/icon/icon-cs.png">고객센터</p>
+            </div>
+
+            <div class="n3">
+                <div>
+                    <h1>좋은 잠이 쌓인다</h1>
+                    <h2>좋은 나를 만든다</h2>
+                </div>
+            </div>
+        </ul>
+
+        <div class="m-search">
+            <input type="text" placeholder="" id="search-input">
+            <div>
+                <p><img src="images/icon/icon-login.png">로그인</p>
+                <span>│</span>
+                <p><img src="images/icon/icon-join.png">회원가입</p>
+            </div>
+
+        </div>
+
+        <div>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+
+    </nav>
+
+
+</header>
+
+<script>
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navlinks = document.querySelectorAll(".nav-links li");
+    const body = document.body;
+
+    const navAnimation = () => {
+        navlinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = "";
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 10 + 0.1}s`;
+            }
+        });
+    };
+
+    const handleNav = () => {
+        nav.classList.toggle("nav-active");
+        navAnimation();
+        burger.classList.toggle("toggle");
+
+        // 본문 스크롤 토글
+        body.style.overflow = (body.style.overflow === "hidden") ? "" : "hidden";
+    };
+
+    const navSlide = () => {
+        burger.addEventListener("click", handleNav);
+    };
+
+    const setNavTransition = (width) => {
+        if (width > 768) {
+            nav.style.transition = "";
+        } else {
+            nav.style.transition = "transform 0.5s ease-in";
+        }
+    };
+
+    const handleResize = () => {
+        const width = window.innerWidth;
+        setNavTransition(width);
+    };
+
+    const init = () => {
+        window.addEventListener("resize", handleResize);
+        navSlide();
+    };
+
+    init();
+</script>
+
+
+<article class="search-box" id="search-box">
+    <div>
+        <input type="text" class="i-input">
+
+        <span id="close-button">X</span>
+    </div>
+
+    <div>
+        <div>
+            <h4>추천 검색어</h4>
+            <div>
+                <button>#프레임</button>
+                <button>#매트리스</button>
+                <button>#리클라이너</button>
+                <button>#소파</button>
+                <button>#스마트 슬리브</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h4>인기 검색어</h4>
+
+        <ol>
+            <li>60주년 한정판</li>
+            <li>신혼침대</li>
+            <li>싱글침대</li>
+            <li>리빙가구</li>
+            <li>오피스 체어</li>
+        </ol>
+    </div>
+</article>
+
+<script>
+    const searchInput = document.getElementById("search-input");
+    const searchBox = document.getElementById("search-box");
+    const closeButton = document.getElementById("close-button");
+
+    searchInput.addEventListener("click", function () {
+        searchBox.style.display = "block";
+    });
+
+
+    closeButton.addEventListener("click", function () {
+        searchBox.style.display = "none";
+    });
+    searchInput.addEventListener("click", function () {
+        
+        searchBox.style.display = "block";
+        document.body.style.overflow = "hidden";
+    });
+
+    closeButton.addEventListener("click", function () {
+        searchBox.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
+
+</script>

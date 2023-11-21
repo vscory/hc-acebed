@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0">
+    <title>remove</title>
+    <link rel="stylesheet" href="remove.css">
+    <script type="text/javascript" src="script.js"></script>
+    <!-- 제이쿼리 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- slick cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+</head>
+
+
+
+<body>
+    
+    <div w3-include-html="header.html"></div>
+
+    <div class="container">
+
+    <article class="remove-account">
+        <h3>회원 탈퇴</h3>
+
+        <div>
+            <h4>회원탈퇴</h4>
+            <h5>정말로 탈퇴하시겠습니까?</h5>
+            <p>탈퇴 시 이용내역이 삭제되며<br>
+                <span>서비스 이용이 제한</span>됩니다.<br>
+                또한 삭제된 <span>계정은 복구되지 않습니다</span>.
+            </p>
+            <button>탈퇴하기</button>
+        </div>
+    </article>
+
+
+
+    <article class="survey">
+        <h4>설문조사</h4>
+        <p>불편했던 점, 개선할 점을 공유해주시면<br>
+            더 나은 서비스를 위해 반영하도록 하겠습니다.</p>
+
+        <div>
+            <h5>탈퇴사유</h5>
+            <select>
+                <option value="">선택해주세요.</option>
+                <option value="">기록 삭제 목적</option>
+                <option value="">이용이 불편하고 장애가 많아서</option>
+                <option value="">다른 사이트가 더 좋아서</option>
+                <option value="">사용빈도가 낮아서</option>
+                <option value="">기타</option>
+            </select>
+        </div>
+
+        <div>
+            <h5>건의사항</h5>
+            <textarea placeholder="소중한 의견 귀담아 듣겠습니다."></textarea>
+        </div>
+
+        <button>제출하기</button>
+    </article>
+
+
+
+    <article class="cancle">
+        <h4>탈퇴 완료</h4>
+
+        <div>
+            <img src="images/icon/remove-cancle.png">
+        </div>
+
+        <p>정상적으로 탈퇴 처리 되었습니다.</p>
+
+        <h5>그 동안 이용해주셔서 감사합니다.</h5>
+
+        <button>홈으로</button>
+
+    </article>
+</div>
+
+<div w3-include-html="footer.html"></div>
+
+<script>
+includeHTML();
+</script>
+
+</body>
+
+</html

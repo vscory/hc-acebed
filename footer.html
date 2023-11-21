@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="footer.css">
+
+
+
+<footer>
+
+
+        <div class="footer-link">
+            <div>
+                <a href="index.html"> <img src="images/header/header-logo.png"></a>
+            </div>
+
+            <a href="">기업정보</a>
+            <a href="">이용약관</a>
+            <a href="" class="priv">개인정보처리방침</a>
+            <a href="">매장개설안내</a>
+            <a href="">특판사업</a>
+            <a href="">고객지원</a>
+            <a href="">구매인증센터</a>
+        </div>
+        <p class="registration">(주)에이스침대 / 사업자등록번호 : 129-81-02666</p>
+
+        <p class="copy">COPYRIGHT (C) ACE BED <br class="only_mob">CORPORATION ALL RIGHTS RESERVED</p>
+
+
+
+        <div id="familySiteContainer">
+            <button id="familySiteButton">Family Site</button>
+            <div id="familySiteList">
+                <a href="#">ENGLISH</a>
+                <a href="#">에이스 에비뉴</a>
+                <a href="#">에이스 헤리츠</a>
+                <a href="#">에이스 침대몰</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+     window.onload = function() {
+    var btn = document.getElementById("familySiteButton");
+    var list = document.getElementById("familySiteList");
+
+    btn.addEventListener('click', function() {
+        if(list.style.visibility === "visible") {
+            list.style.opacity = "0";
+            list.style.visibility = "hidden";
+        } else {
+            list.style.visibility = "visible";
+            list.style.opacity = "1";
+        }
+    });
+
+    window.addEventListener('click', function(e) {
+        if (!e.target.matches('#familySiteButton')) {
+            list.style.opacity = "0";
+            list.style.visibility = "hidden";
+        }
+    });
+}
+    </script>

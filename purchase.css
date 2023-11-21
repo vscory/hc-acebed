@@ -1,0 +1,648 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://webfontworld.github.io/score/SCoreDream.css');
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  word-break: keep-all;
+  outline: 0px solid silver;
+}
+
+img {
+  width: 100px;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1rem;
+  color: #000;
+  letter-spacing: 0.1px;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-family: 'SCoreDream';
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+}
+
+h5 {
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+}
+
+a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+button {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+span {
+  font-weight: normal;
+  color: #999;
+}
+
+select{
+  padding: 10px 3%;
+  appearance:none;
+background: url('images/icon/icon-select.png') no-repeat;
+background-size: 15px;
+background-position: right 24px center;
+}
+
+p{
+  font-family: 'SCoreDream';
+}
+
+/* mobile start */
+
+/* #imageContainer{
+  width: 100%;
+  height: 300px;
+} */
+
+.product-img {
+  padding: 30px 8%;
+}
+
+.product-img> :nth-child(1) {
+  width: 100%;
+  position: relative;
+  
+}
+
+.product-img> :nth-child(1) :nth-child(1) {
+  width: 100%;
+  height: 200px;
+}
+
+.product-img> :nth-child(1) :nth-child(2) {
+  position: absolute;
+  padding: 8px;
+  justify-content: space-between;
+  bottom: 40%;
+  left: 5%;
+  cursor: pointer;
+  
+}
+
+.product-img> :nth-child(1) :nth-child(3) {
+  position: absolute;
+  padding: 8px;
+  justify-content: space-between;
+  bottom: 40%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.product-img> :nth-child(1) div {
+  font-size: 2rem;
+  border-radius: 50%;
+  text-align: center;
+  color: #888;
+}
+
+
+
+
+.mini-img {
+  padding: 50px 0;
+  display: flex;
+  justify-content: left;
+}
+
+.mini-img div {
+  margin-top: -30px;
+  margin-right: 5px;
+  width: 100%;
+}
+
+.mini-img div img {
+  width: 100%;
+  height: 60px;
+}
+
+
+
+
+.caster {
+  margin-top: -60px;
+  padding: 0 8%;
+}
+
+.caster> :first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.caster :first-child :first-child p {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.caster :last-child {
+  display: flex;
+  align-items: center;
+}
+
+.caster :last-child :last-child {
+  margin-left: 3px;
+  width: 15px;
+}
+
+.caster> :nth-child(2) {
+ margin: 10px 0 20px 0;
+ color: #787878;
+}
+
+.caster> :nth-child(3) {
+  display: flex;
+  justify-content: space-between;
+  color: #0890c0;
+  font-size: 1.4rem;
+}
+
+.caster :nth-child(3) button {
+  width: 40%;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  border: none;
+  background-color: #a2b8c9;
+  color: #fff;
+  font-weight: bold;
+}
+
+#bedGuidePopup {
+  padding: 0 5%;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 100%;
+}
+
+#closeBtn {
+  position: absolute;
+  right: 1%;
+  top: -20%;
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
+#bedGuidePopup img {
+  width: 100%;
+}
+
+
+.delivery {
+  padding: 10px 0 50px 0;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.delivery p {
+  margin-bottom: 10px;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.delivery span {
+  margin-left: 5px;
+}
+
+
+.choice h3{
+  padding-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.choice select {
+  margin : 10px 0;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+
+.caster :nth-child(8) {
+  margin: 30px 0;
+}
+
+.caster :nth-child(9) {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.caster :nth-child(10) {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.caster :nth-child(10) button {
+  width: 40%;
+  height: 50px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.caster :nth-child(10) :first-child {
+  width: 37%;
+  padding: 3%;
+  background-color: #0890c0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.caster :nth-child(10) :nth-child(2) {
+  width: 37%;
+  padding: 3%;
+  background-color: #777;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.caster :nth-child(10) div {
+  padding-bottom: 6px;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+
+
+
+.caster> :last-child :last-child {
+  margin: 0 auto;
+  width: 100%;
+}
+
+#heart {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: crimson;
+  font-size: 2.5rem;
+  border: 2px solid #d7d7d7;
+  display: flex;
+  justify-content: center;
+}
+
+h4 {
+  padding: 10px 8%;
+  margin-top: 50px;
+  font-size: 0.9rem;
+}
+
+
+#login-Popup {
+  width: 90%;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f7f7f7;
+  text-align: center;
+  z-index: 9999;
+}
+
+#login-Popup *{
+  margin: 20px 0;
+}
+
+#login-Popup img{
+  width: 30%;
+}
+
+#login-Popup h3{
+  width: 100%;
+}
+
+#login-Popup p{
+  width: 100%;
+  line-height: 25px;
+}
+
+#login-Popup> :last-child button{
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #0890c0;
+  color: #fff;
+  border: none;
+}
+
+#login-closeBtn{
+  position: absolute;
+  top: 1%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  background: none;
+  font-size: 2rem;
+}
+
+
+.moreinfo1 {
+  padding: 50px 8%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  line-height: 30px;
+}
+
+.moreinfo1 ul {
+  width: 100%;
+}
+
+.moreinfo1> :first-child {
+  margin-right: 50px;
+}
+
+.morebtn {
+  margin-top: -30px;
+  display: flex;
+  justify-content: center;
+}
+
+.morebtn>button {
+  border-style: none;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.moreinfo2 {
+  display: none;
+}
+
+
+
+.product-info {
+  padding: 70px 8%;
+  text-align: center;
+}
+
+.product-info h2 {
+  font-size: 1.8rem;
+}
+
+.product-info p {
+  margin: 10px 0;
+  line-height: 20px;
+  font-size: 0.9rem;
+}
+
+.product-info div {
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.product-info section img {
+  width: 100%;
+  height: 250px;
+  margin: 30px 0 80px 0;
+}
+
+
+
+
+
+/* laptop start */
+@media screen and (min-width: 1366px) {
+  .oder {
+    display: flex;
+  }
+
+  #imageContainer{
+    width: 100%;
+    height: 500px;
+  }
+
+  .product-img {
+    width: 100%;
+  }
+  
+  .product-img> :nth-child(1) {
+    width: 100%;
+    position: relative;
+  }
+  
+  .product-img> :nth-child(1) :nth-child(1) {
+    width: 100%;
+  }
+  
+
+  .product-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .product-info p {
+    line-height: 30px;
+    font-size: 1rem;
+  }
+
+  .product-info section img {
+    width: 100%;
+  }
+
+  .product-info div :nth-child(2) {
+    margin: 0 auto;
+    width: 380px;
+  }
+
+  .product-img> :nth-child(1) :nth-child(2) {
+    position: absolute;
+    padding: 8px;
+    justify-content: space-between;
+    bottom: 40%;
+    left: 15%;
+    cursor: pointer;
+  }
+  
+  .product-img> :nth-child(1) :nth-child(3) {
+    position: absolute;
+    padding: 8px;
+    justify-content: space-between;
+    bottom: 40%;
+    right: 15%;
+    cursor: pointer;
+  }
+
+
+  .mini-img {
+    padding: 50px 0;
+    display: flex;
+    justify-content: left;
+  }
+  
+  .mini-img div {
+    margin-top: -30px;
+    margin-right: 5px;
+    width: 100%;
+  }
+  
+  .mini-img div img {
+    width: 150px;
+    height: 100px;
+  }
+  
+
+
+
+  #bedGuidePopup {
+    padding: 0 5%;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 50%;
+  }
+
+
+  #bedGuidePopup img {
+    width: 100%;
+  }
+
+
+
+
+  .delivery {
+    padding: 10px 0 50px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+
+
+  .caster {
+    margin-top: 70px;
+    margin-left: -200px;
+    width: 50%;
+  }
+
+
+
+  #login-Popup {
+    width: 50%;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f7f7f7;
+    text-align: center;
+    z-index: 9999;
+  }
+
+  #login-Popup img{
+    width: 20%;
+  }
+
+
+  .moreinfo1 ul {
+    margin-right: 80px;
+  }
+
+  .moreinfo2 {
+    width: 100%;
+    display: block;
+  }
+
+
+
+  .product-info :nth-child(2),
+  .product-info :nth-child(4) {
+    flex-direction: row-reverse;
+  }
+
+  .product-info div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-info div section img {
+    width: 120%;
+    margin-top: 60px;
+  }
+
+  .product-info div section {
+    width: 50%;
+    height: 50%;
+    
+  }
+  .product-info div section p{
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+
+
+}
