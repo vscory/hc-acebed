@@ -8,6 +8,9 @@
     <title>main</title>
     <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script/jquery-1.12.4.js"></script>
+
+    <script type="text/javascript" src="script/custom.js"></script>
     <!-- 제이쿼리 -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <!-- slick cdn -->
@@ -17,57 +20,57 @@
 
 
 <body>
-   
+
 
     <div w3-include-html="header.html"></div>
 
 
-        <main>
-            <div class="slide_wrap">
-                <div class="slide">
-                    <div class="slide_item item1">
-                        <div>
-                            <h1>제니와 좋은 잠</h1>
-                            <h2>talk</h2>
-                        </div>
-                    </div>
-                    <div class="slide_item item2">
-                        <div>
-                            <h1>나에게 맞는 매트리스 찾기</h1>
-                            <p>침대는 과학! 에이스침대에서 운영하는 이동수면공학연구소의 기술과 노하우가 담긴<br>
-                                5만여 건의 분석 데이터를 기반으로 고객님에게 맞는 매트리스를 찾아드립니다.</p>
-                        </div>
-                    </div>
-                    <div class="slide_item item3">
-                        <div>
-                            <h1>좋은 잠이 쌓인다</h1>
-                            <h2>좋은 나를 만든다</h2>
-                        </div>
-                    </div>
-                    <div class="slide_item item4">
-                        <div>
-                            <p>침대 과학을 만나는 프리미엄 공간</p>
-                            <h1>ACE SQUARE</h1>
-                        </div>
-                    </div>
-                    <div class="slide_item item5">
-                        <div>
-                            <h1>BACIO</h1>
-                            <p>원하는 스타일로  침대를 자유롭게 꾸밀 수 있는 홈퍼니싱 컨셉의 싱글 침대</p>
-                            
-                        </div>
+    <main>
+        <div class="slide_wrap">
+            <div class="slide">
+                <div class="slide_item item1">
+                    <div>
+                        <h1>제니와 좋은 잠</h1>
+                        <h2>talk</h2>
                     </div>
                 </div>
-                <div class="slide_prev_button slide_button">《</div>
-                <div class="slide_next_button slide_button">》</div>
-                <ul class="slide_pagination"></ul>
+                <div class="slide_item item2">
+                    <div>
+                        <h1>나에게 맞는 매트리스 찾기</h1>
+                        <p>침대는 과학! 에이스침대에서 운영하는 이동수면공학연구소의 기술과 노하우가 담긴<br>
+                            5만여 건의 분석 데이터를 기반으로 고객님에게 맞는 매트리스를 찾아드립니다.</p>
+                    </div>
+                </div>
+                <div class="slide_item item3">
+                    <div>
+                        <h1>좋은 잠이 쌓인다</h1>
+                        <h2>좋은 나를 만든다</h2>
+                    </div>
+                </div>
+                <div class="slide_item item4">
+                    <div>
+                        <p>침대 과학을 만나는 프리미엄 공간</p>
+                        <h1>ACE SQUARE</h1>
+                    </div>
+                </div>
+                <div class="slide_item item5">
+                    <div>
+                        <h1>BACIO</h1>
+                        <p>원하는 스타일로 침대를 자유롭게 꾸밀 수 있는 홈퍼니싱 컨셉의 싱글 침대</p>
+
+                    </div>
+                </div>
             </div>
-        </main>
-    
+            <div class="slide_prev_button slide_button">《</div>
+            <div class="slide_next_button slide_button">》</div>
+            <ul class="slide_pagination"></ul>
+        </div>
+    </main>
+
 
 
     <script>
-          document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const slideWrap = document.querySelector('.slide_wrap');
             const slide = document.querySelector('.slide');
             const slideItems = document.querySelectorAll('.slide_item');
@@ -173,16 +176,14 @@
             </div>
 
             <div class="vid-button">
-                <img
-                    src="images/main/main-at1.jpg">
+                <img src="images/main/main-at1.jpg">
                 <button id="play-button">▶</button>
             </div>
 
             <div id="video-modal" class="modal">
                 <div class="modal-content">
                     <span class="close" id="close-button">&times;</span>
-                    <iframe src="https://www.youtube.com/embed/igmIP4Zp98M" frameborder="0"
-                        allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/igmIP4Zp98M" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
@@ -517,22 +518,22 @@
             });
 
             $(document).ready(function () {
-      // 화면 크기를 확인하고 섹션바를 초기화합니다.
-      checkScreenSize();
+                // 화면 크기를 확인하고 섹션바를 초기화합니다.
+                checkScreenSize();
 
-      // 화면 크기가 변경될 때마다 섹션바를 확인하여 업데이트합니다.
-      $(window).resize(function () {
-        checkScreenSize();
-      });
+                // 화면 크기가 변경될 때마다 섹션바를 확인하여 업데이트합니다.
+                $(window).resize(function () {
+                    checkScreenSize();
+                });
 
-      function checkScreenSize() {
-        if ($(window).width() >= 768) {
-          $('.section-bar').hide(); // 섹션바 숨기기
-        } else {
-          $('.section-bar').show(); // 섹션바 보이기
-        }
-      }
-    });
+                function checkScreenSize() {
+                    if ($(window).width() >= 768) {
+                        $('.section-bar').hide(); // 섹션바 숨기기
+                    } else {
+                        $('.section-bar').show(); // 섹션바 보이기
+                    }
+                }
+            });
 
         </script>
 
@@ -583,7 +584,7 @@
     <div w3-include-html="footer.html"></div>
 
     <script>
-    includeHTML();
+        includeHTML();
     </script>
 </body>
 
