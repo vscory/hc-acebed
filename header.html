@@ -1,565 +1,180 @@
-@charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-@import url('https://webfontworld.github.io/gonggames/EsaManru.css');
-@import url('https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css');
-@import url('https://webfontworld.github.io/score/SCoreDream.css');
+<link rel="stylesheet" href="header.css">
+
+<header>
+    <nav>
+        <div class="logo">
+           <a href="index.html"> <img src="images/header/header-logo.png"></a>
+        </div>
+
+        <ul class="nav-links">
+            <div class="n1">
+
+                <div>
+                    <h4>로그인하시면 더 많은 혜택이 있습니다.</h4>
+                </div>
+
+                <div>
+                    <p><img src="images/icon/icon-login.png"><a href="login.html">로그인</a></p>
+                    <span>│</span>
+                    <p><img src="images/icon/icon-join.png"><a href="join.html">회원가입</a></p>
+                    <span>│</span>
+                    <p><img src="images/icon/icon-present.png"><a href=""> 회원혜택</a></p>
+                </div>
+            </div>
+
+            <div class="nav-menu">
+                <li><a href="purchase.html">purchase</a><p>+</p></li>
+                <li><a href="#">news</a><p>+</p></li>
+                <li><a href="login.html">login</a><p>+</p></li>
+                <li><a href="remove.html">remove</a><p>+</p></li>
+                <li><a href="#">board</a><p>+</p></li>
+                <li><a href="#">qna</a><p>+</p></li>
+                <li><a href="#">faq</a><p>+</p></li>
+            </div>
+
+            <div class="n2">
+                <p><img src="images/icon/icon-map-search.png">매장찾기</p>
+                <p><img src="images/icon/icon-delivery-.png">주문/배송</p>
+                <p><img src="images/icon/icon-cs.png">고객센터</p>
+            </div>
+
+            <div class="n3">
+                <div>
+                    <h1>좋은 잠이 쌓인다</h1>
+                    <h2>좋은 나를 만든다</h2>
+                </div>
+            </div>
+        </ul>
+
+        <div class="m-search">
+            <input type="text" placeholder="" id="search-input">
+            <div>
+                <p><img src="images/icon/icon-login.png"><a href="login.html">로그인</a></p>
+                <span>│</span>
+                <p><img src="images/icon/icon-join.png"><a href="join.html">회원가입</a></p>
+            </div>
+
+        </div>
+
+        <div>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+
+    </nav>
 
 
+</header>
+
+<script>
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navlinks = document.querySelectorAll(".nav-links li");
+    const body = document.body;
+
+    const navAnimation = () => {
+        navlinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = "";
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 10 + 0.1}s`;
+            }
+        });
+    };
+
+    const handleNav = () => {
+        nav.classList.toggle("nav-active");
+        navAnimation();
+        burger.classList.toggle("toggle");
+
+        // 본문 스크롤 토글
+        body.style.overflow = (body.style.overflow === "hidden") ? "" : "hidden";
+    };
+
+    const navSlide = () => {
+        burger.addEventListener("click", handleNav);
+    };
+
+    const setNavTransition = (width) => {
+        if (width > 768) {
+            nav.style.transition = "";
+        } else {
+            nav.style.transition = "transform 0.5s ease-in";
+        }
+    };
+
+    const handleResize = () => {
+        const width = window.innerWidth;
+        setNavTransition(width);
+    };
+
+    const init = () => {
+        window.addEventListener("resize", handleResize);
+        navSlide();
+    };
+
+    init();
+</script>
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  word-break: keep-all;
-  outline: 0px solid silver;
-  list-style: none;
-}
+<article class="search-box" id="search-box">
+    <div>
+        <input type="text" class="i-input">
 
-body {
-  font-family: 'SCoreDream';
-  line-height: 1rem;
-  letter-spacing: 0.1px;
-  background-color: #fff;
-}
+        <span id="close-button">X</span>
+    </div>
 
-h1 {
-  font-size: 4rem;
-  line-height: 4rem;
-  text-transform: uppercase;
-}
+    <div>
+        <div>
+            <h4>추천 검색어</h4>
+            <div>
+                <button>#프레임</button>
+                <button>#매트리스</button>
+                <button>#리클라이너</button>
+                <button>#소파</button>
+                <button>#스마트 슬리브</button>
+            </div>
+        </div>
+    </div>
 
-h2 {
-  font-size: 2.4rem;
-  line-height: 2.4rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
+    <div>
+        <h4>인기 검색어</h4>
 
-h3 {
-  font-size: 1.4rem;
-  line-height: 1.4rem;
-}
+        <ol>
+            <li>60주년 한정판</li>
+            <li>신혼침대</li>
+            <li>싱글침대</li>
+            <li>리빙가구</li>
+            <li>오피스 체어</li>
+        </ol>
+    </div>
+</article>
 
-h4 {
-  font-size: 1.1rem;
-  line-height: 1.1rem;
-}
+<script>
+    const searchInput = document.getElementById("search-input");
+    const searchBox = document.getElementById("search-box");
+    const closeButton = document.getElementById("close-button");
 
-h5 {
-  font-size: 0.7rem;
-  line-height: 0.7rem;
-}
-
-p {
-  font-family: 'NanumSquareNeo';
-  font-weight: bold;
-
-}
-
-.n1> :last-child a {
-  color: #fff;
-}
+    searchInput.addEventListener("click", function () {
+        searchBox.style.display = "block";
+    });
 
 
+    closeButton.addEventListener("click", function () {
+        searchBox.style.display = "none";
+    });
+    searchInput.addEventListener("click", function () {
+        
+        searchBox.style.display = "block";
+        document.body.style.overflow = "hidden";
+    });
 
-button {
-  width: 90px;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-  transition: 0.3s;
-  font-family: 'EsaManru';
-}
+    closeButton.addEventListener("click", function () {
+        searchBox.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
 
-button:hover {
-  cursor: pointer;
-}
-
-img {
-  width: 100px;
-}
-
-
-input {
-  padding: 5px 3%;
-}
-
-/* mobile start */
-
-
-header {
-  padding: 0 7%;
-}
-
-.ham>div {
-  padding: 1.5px 0;
-  width: 30px;
-  background-color: #fff;
-  margin: 8px 0;
-}
-
-nav {
-  width: 100%;
-  z-index: 1;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* 요소의 최소 너비 지정, height 속성 무시
-    vh단위는 브라우저 안쪽 높이(window.innerHeight)을 기준으로
-    설정된다. 하지만 태블릿이나, 모바일의 경우에는 뷰 포트에 따라
-    맞춰짐*/
-  min-height: 8vh;
-  text-transform: capitalize;
-}
-
-header>nav>.logo {
-
-  color: rgb(226, 226, 226);
-  text-transform: uppercase;
-  /* 각 글자 2px씩 간격을 줌*/
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-header>nav>.logo>img {
-  width: 100px;
-}
-
-.nav-links {
-  padding: 30px 0;
-  width: 40%;
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.nav-links li {
-  line-height: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  border-bottom: 1px solid #ccc;
-  transition: 0.3s;
-}
-
-.nav-links li:hover {
-  cursor: pointer;
-  scale: 1.05;
-}
-
-.nav-links li p {
-  color: #ccc;
-}
-
-
-.nav-links a {
-  color: #555;
-  text-decoration: none;
-  letter-spacing: 3px;
-  line-height: 20px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-
-
-
-.burger {
-  display: none;
-  cursor: pointer;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: #000;
-  margin: 5px;
-  transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 1024px) {
-  .nav-links {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .search-box {
-    width: 100%;
-    position: fixed;
-    padding: 20px 0;
-    margin-top: -280px;
-    text-align: center;
-    height: 100vh;
-    z-index: 1;
-  }
-
-  
-
-  .nav-links li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    border: none;
-  }
-
-  .nav-links li p{
-    display: none;
-  }
-
-  .nav-menu {
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-menu ul {
-    margin-left: -30px;
-  }
-
-  .nav-menu li {
-    margin-right: 30px;
-  }
-}
-
-@media screen and (max-width: 1366px) {
-    body {
-      overflow-x: hidden;
-    }
-  
-    .nav-links {
-      position: absolute;
-      top: 7vh;
-      right: 0;
-      height: 100vh;
-      background-color: #fff;
-      flex-direction: column;
-      align-items: left;
-      width: 100%;
-      transform: translateX(100%);
-      z-index: 1;
-    }
-  
-    .nav-menu {
-      margin-top: -300px;
-    }
-  
-    .nav-links li {
-      margin: 10px 10%;
-      opacity: 0;
-    }
-  
-    .n1> :first-child,
-    .n1,
-    .n2 {
-      font-size: 0.8rem;
-    }
-  
-  
-    .n1 {
-      width: 100%;
-      padding: 30px 10% 10px 10%;
-      text-align: center;
-      background-color: #408ebc;
-      color: #fff;
-    }
-  
-    .n1> :first-child {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .n1>div>h4 {
-      width: 100%;
-      height: 30px;
-      border-bottom: 1px solid #ccc;
-      font-size: 0.9rem;
-    }
-  
-    .n1> :nth-child(2) {
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-  
-    .n1> :nth-child(2) p {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .n1> :nth-child(2) p:hover {
-      cursor: pointer;
-    }
-  
-    .n1> :nth-child(2) img {
-      padding: 3px;
-      width: 23px;
-      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(114%) contrast(101%);
-    }
-  
-  
-    .n2 {
-      position: relative;
-      padding: 0 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #408ebc;
-      font-weight: bold;
-    }
-  
-    .n2 p {
-  
-      margin-top: -550px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .n2 p:hover {
-      cursor: pointer;
-    }
-  
-    .n2 img {
-      padding: 3px;
-      width: 25px;
-    }
-  
-    .n3 {
-      position: absolute;
-      width: 100%;
-      height: 150px;
-      bottom: 3%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: url(images/header/nav-img.jpg) no-repeat right center;
-      background-size: cover;
-      text-align: right;
-      color: #f5f5f5;
-    }
-  
-    .n3 div {
-      margin-left: 140px;
-      width: 50%;
-      height: 150px;
-      background: rgba(85, 140, 184, 0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .n3 h1 {
-      font-size: 1.4rem;
-    }
-  
-    .n3 h2 {
-      margin-top: -15px;
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
-  
-    .burger {
-      display: block;
-    }
-  
-    .nav-active {
-      transform: translateX(0%);
-    }
-  
-    @keyframes navLinkFade {
-      from {
-        opacity: 0;
-        transform: translateX(5px);
-      }
-  
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-  
-  .toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-  
-  .toggle .line2 {
-    opacity: 0;
-  }
-  
-  .toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
-  
-  nav> :first-child>img {
-    width: 30px;
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  .m-search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .m-search>input {
-    margin: 0px 0px 0px 60px;
-    width: 70%;
-    border: 1px solid #c3c3c3;
-    border-radius: 20px;
-    background: url("images/icon/icon-search.png") no-repeat;
-    background-size: 18px;
-    background-position: 95%;
-  }
-  
-  .m-search>div {
-    display: none;
-  }
-  
-  /* 검색 박스 숨김 상태 */
-  .search-box {
-    display: none;
-    width: 100%;
-    position: fixed;
-    padding: 20px 0;
-    margin-top: -80px;
-    text-align: center;
-    height: 100vh;
-    background-color: #fff;
-    z-index: 1;
-  }
-  
-  .search-box div {
-    padding: 20px 0;
-  }
-  
-  .search-box h4 {
-    padding: 20px 0;
-  }
-  
-  .search-box> :first-child {
-    padding: 20px 5%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-  }
-  
-  .search-box> :first-child * {
-    margin: 10px 5px
-  }
-  
-  .search-box> :first-child>img {
-    width: 30px;
-  }
-  
-  .search-box> :first-child>input {
-    border-radius: 20px;
-    background: url("images/icon/icon-search.png") no-repeat;
-    background-size: 18px;
-    background-position: 95%;
-    border: 1px solid #ccc;
-  
-  }
-  
-  .search-box> :first-child>span {
-    position: absolute;
-    right: 1%;
-    top: -10%;
-    padding: 7px;
-    font-size: 2.3rem;
-  }
-  
-  .search-box> :first-child>span:hover {
-    cursor: pointer;
-  }
-  
-  .search-box> :nth-child(2) {
-    background-color: #f4f4f4;
-  }
-  
-  .search-box> :nth-child(2)>div {
-    padding: 0 5%;
-  }
-  
-  .search-box> :nth-child(2) button {
-    width: 120px;
-    background: none;
-    border-radius: 20px;
-    margin: 5px;
-    font-weight: 500;
-  }
-  
-  .search-box> :last-child {
-    padding: 0 5%;
-    line-height: 50px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
-  
-  }
-  
-  .search-box> :last-child>ol {
-    list-style: none;
-  }
-  
-
-  /* laptop start */
-@media screen and (min-width: 1366px) {
-
-  .n1,
-  .n2,
-  .n3 {
-    display: none;
-  }
-
-    .nav-menu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row;
-    }
-  
-    .nav-menu li {
-      margin-right: 30px;
-    }
-  
-  
-    .m-search>div {
-      margin-right: -100px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #555;
-    }
-  
-    .m-search>div p {
-      margin: 0 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .m-search>div p img {
-      width: 18px;
-      filter: invert(31%) sepia(7%) saturate(20%) hue-rotate(14deg) brightness(95%) contrast(82%);
-    }
-}  
+</script>
