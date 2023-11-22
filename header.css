@@ -57,6 +57,10 @@ p {
 
 }
 
+a{
+  text-decoration: none;
+}
+
 .n1> :last-child a {
   color: #fff;
 }
@@ -556,6 +560,11 @@ header>nav>.logo>img {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .m-search div p a{
+      color: #000;
+      border: none;
     }
   
     .m-search>div p img {
