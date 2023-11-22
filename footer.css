@@ -69,13 +69,8 @@ button {
     padding: 10px 20px;
     border: 1px solid #ccc;
     background: white;
-    cursor: pointer;
     transition: 0.3s;
     font-family: 'EsaManru';
-}
-
-button:hover {
-    cursor: pointer;
 }
 
 img {
