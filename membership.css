@@ -277,6 +277,7 @@ input::placeholder{
 }
 
 .join :first-child h3 {
+  margin-top: -50px;
   padding: 20px;
   text-transform: capitalize;
   font-size: 3rem;
@@ -517,7 +518,8 @@ input::placeholder{
 }
 
 .remove-account> h3{
-  margin: 70px 0;
+  margin-top: -130px;
+  margin-bottom: 70px;
   text-transform: capitalize;
   font-size: 3rem;
 }
@@ -532,6 +534,10 @@ input::placeholder{
 
 .remove-account> div> :first-child{
  margin: 20px 0 50px 0;
+}
+
+.remove-account> div> :nth-child(2){
+  font-size: 1.4rem;
 }
 
 .remove-account> div> :nth-child(3){
@@ -616,6 +622,7 @@ input::placeholder{
 
 
 .cancle{
+  
   padding: 30px 8%;
   height: 420px;
   text-align: center;
