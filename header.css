@@ -74,14 +74,10 @@ button {
   padding: 10px 20px;
   border: 1px solid #ccc;
   background: white;
-  cursor: pointer;
   transition: 0.3s;
   font-family: 'EsaManru';
 }
 
-button:hover {
-  cursor: pointer;
-}
 
 img {
   width: 100px;
@@ -152,7 +148,6 @@ header>nav>.logo>img {
 }
 
 .nav-links li:hover {
-  cursor: pointer;
   scale: 1.05;
 }
 
@@ -261,11 +256,9 @@ header>nav>.logo>img {
     }
   
     .n1> :first-child,
-    .n1,
     .n2 {
       font-size: 0.8rem;
     }
-  
   
     .n1 {
       width: 100%;
@@ -293,15 +286,12 @@ header>nav>.logo>img {
       justify-content: space-around;
       align-items: center;
     }
+
   
     .n1> :nth-child(2) p {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-  
-    .n1> :nth-child(2) p:hover {
-      cursor: pointer;
     }
   
     .n1> :nth-child(2) img {
@@ -327,10 +317,6 @@ header>nav>.logo>img {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-  
-    .n2 p:hover {
-      cursor: pointer;
     }
   
     .n2 img {
