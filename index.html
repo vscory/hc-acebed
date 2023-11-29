@@ -71,101 +71,105 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const slideWrap = document.querySelector('.slide_wrap');
-            const slide = document.querySelector('.slide');
-            const slideItems = document.querySelectorAll('.slide_item');
-            const prevButton = document.querySelector('.slide_prev_button');
-            const nextButton = document.querySelector('.slide_next_button');
-            const pagination = document.querySelector('.slide_pagination');
+       document.addEventListener('DOMContentLoaded', function () {
+    const slideWrap = document.querySelector('.slide_wrap');
+    const slide = document.querySelector('.slide');
+    const slideItems = document.querySelectorAll('.slide_item');
+    const prevButton = document.querySelector('.slide_prev_button');
+    const nextButton = document.querySelector('.slide_next_button');
+    const pagination = document.querySelector('.slide_pagination');
 
-            let currentIndex = 0;
-            let intervalId;
+    let currentIndex = 0;
+    let intervalId;
+    let isTransitioning = false;
 
-            // 추가된 변수
-            let isTransitioning = false;
+    function updateSlide() {
+        const itemWidth = slideWrap.clientWidth;
+        slide.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
 
-            function updateSlide() {
-                const itemWidth = slideWrap.clientWidth;
-                slide.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-            }
-
-            function updatePagination() {
-                pagination.innerHTML = '';
-                for (let i = 0; i < slideItems.length; i++) {
-                    const dot = document.createElement('li');
-                    dot.classList.add('pagination_dot');
-                    dot.addEventListener('click', () => {
-                        if (!isTransitioning) {
-                            currentIndex = i;
-                            updateSlide();
-                            updatePagination();
-                        }
-                    });
-                    if (i === currentIndex) {
-                        dot.classList.add('active');
-                    }
-                    pagination.appendChild(dot);
-                }
-            }
-
-            function goToNextSlide() {
+    function updatePagination() {
+        pagination.innerHTML = '';
+        for (let i = 0; i < slideItems.length; i++) {
+            const dot = document.createElement('li');
+            dot.classList.add('pagination_dot');
+            dot.addEventListener('click', () => {
                 if (!isTransitioning) {
-                    if (currentIndex < slideItems.length - 1) {
-                        currentIndex++;
-                    } else {
-                        currentIndex = 0;
-                    }
+                    isTransitioning = true;
+                    slide.style.transition = 'all 0.5s ease';
+                    currentIndex = i;
                     updateSlide();
                     updatePagination();
                 }
-            }
-
-            function startAutoSlide() {
-                intervalId = setInterval(goToNextSlide, 3500); // 3.5초마다 슬라이드 변경
-            }
-
-            function stopAutoSlide() {
-                clearInterval(intervalId);
-            }
-
-            prevButton.addEventListener('click', () => {
-                if (!isTransitioning && currentIndex > 0) {
-                    currentIndex--;
-                    updateSlide();
-                    updatePagination();
-                    stopAutoSlide();
-                    startAutoSlide();
-                }
             });
-
-            nextButton.addEventListener('click', () => {
-                if (!isTransitioning) {
-                    goToNextSlide();
-                    stopAutoSlide();
-                    startAutoSlide();
-                }
-            });
-
-            slideWrap.addEventListener('mouseenter', stopAutoSlide);
-            slideWrap.addEventListener('mouseleave', startAutoSlide);
-
-            // 추가된 트랜지션 종료 핸들러
-            function transitionEndHandler() {
-                isTransitioning = false;
-                slide.style.transition = ''; // 트랜지션 제거
+            if (i === currentIndex) {
+                dot.classList.add('active');
             }
+            pagination.appendChild(dot);
+        }
+    }
 
-            slide.addEventListener('transitionend', transitionEndHandler);
-
-            startAutoSlide();
+    function goToNextSlide() {
+        if (!isTransitioning) {
+            isTransitioning = true;
+            slide.style.transition = 'all 0.5s ease';
+            if (currentIndex < slideItems.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
             updateSlide();
             updatePagination();
+        }
+    }
 
-            window.addEventListener('resize', () => {
-                updateSlide();
-            });
-        });
+    function startAutoSlide() {
+        intervalId = setInterval(goToNextSlide, 3500); 
+    }
+
+    function stopAutoSlide() {
+        clearInterval(intervalId);
+    }
+
+    prevButton.addEventListener('click', () => {
+        if (!isTransitioning && currentIndex > 0) {
+            isTransitioning = true;
+            slide.style.transition = 'all 0.5s ease';
+            currentIndex--;
+            updateSlide();
+            updatePagination();
+            stopAutoSlide();
+            startAutoSlide();
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (!isTransitioning) {
+            goToNextSlide();
+            stopAutoSlide();
+            startAutoSlide();
+        }
+    });
+
+    slideWrap.addEventListener('mouseenter', stopAutoSlide);
+    slideWrap.addEventListener('mouseleave', startAutoSlide);
+
+    function transitionEndHandler() {
+        isTransitioning = false;
+        slide.style.transition = '';
+    }
+
+    slide.addEventListener('transitionend', transitionEndHandler);
+
+    startAutoSlide();
+    updateSlide();
+    updatePagination();
+
+    window.addEventListener('resize', () => {
+        updateSlide();
+    });
+});
+
     </script>
 
     <article class="technology">
