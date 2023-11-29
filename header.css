@@ -251,9 +251,10 @@ header>nav>.logo>img {
     }
   
     .nav-links li {
-      margin: 10px 10%;
+      margin: 50px 10%;
       opacity: 0;
     }
+
   
     .n1> :first-child,
     .n2 {
